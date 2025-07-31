@@ -13,9 +13,13 @@ def create_person_list(people: list[dict]) -> list:
         person_object = Person(name=person["name"], age=person["age"])
         result.append(person_object)
     for i, person in enumerate(people):
-        if person.get("husband", False):
+        if (person.get("husband", False)
+            and person.get("husband", False) is not None
+                and Person.people[person.get("husband")]):
             result[i].husband = Person.people[person.get("husband")]
-        elif person.get("wife", False):
+        elif (person.get("wife", False)
+              and person.get("wife", False) is not None
+              and Person.people[person.get("wife")]):
             result[i].wife = Person.people[person.get("wife")]
     return result
 
